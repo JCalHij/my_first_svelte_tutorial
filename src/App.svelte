@@ -1,35 +1,25 @@
 <script>
-  let name = "Javi";
-  let inputName = "";
+  const title = "Bullshit";
+  let firstName = "Javier";
+  let lastName = "Calderon";
+  let color = "white";
+  let numClicks = 0;
 
-  const handleClick = () => {
-    name = inputName;
+  // Reactive variable
+  $: fullName = `${firstName} ${lastName}`;
+  // Reactive statement
+  $: if (numClicks % 5 == 0) {
+    fullName = fullName.toUpperCase();
+  } else {
+    fullName = `${firstName} ${lastName}`;
   }
-
-  const handleInput = (e) => {
-    inputName = e.target.value;
-  }
-  
-  let syncedValue = "Mimi";
-  const handleSecondInput = (e) => {
-    syncedValue = e.target.value;
-  }
-
-  let bindValue = "Hello";
 </script>
 
 <main>
-  <h1>My title</h1>
-  <p>Hello {name}</p>
-  <input value={inputName} type="text" on:input={handleInput}>
-  <button on:click={handleClick}>Update Name</button>
-  <br>
-  <br>
-  <p>Sync value: {syncedValue}</p>
-  <input value={syncedValue} type="text" on:input={handleSecondInput}>
-  <button on:click={()=>{syncedValue = name;}}>Another button</button>
-  <br>
-  <br>
-  <p>Sync value: {bindValue}</p>
-  <input bind:value={bindValue} type="text">
+  <h1>{title}</h1>
+  <p style="color: {color}">{fullName} - {color}</p>
+  <input type="text" bind:value={firstName}>
+  <input type="text" bind:value={lastName}>
+  <input bind:value={color}>
+  <button on:click={() => {numClicks++;}}>Click Me!</button>
 </main>

@@ -24,8 +24,6 @@ a:hover {
 }
 
 body {
-  /* display: flex;
-  place-items: center; */
   min-width: 320px;
   min-height: 100vh;
   background-color: #eee;
@@ -39,14 +37,8 @@ h1 {
   line-height: 1.1;
 }
 
-.card {
-  /* padding: 2em; */
-}
-
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  /* padding: 2rem; */
+  margin: auto;
   text-align: center;
 }
 
@@ -70,19 +62,6 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
-
-/* @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */
 
 /* My own styles */
 

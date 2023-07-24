@@ -29,10 +29,16 @@
 
     id++;
   }
+
+  let showModal = false;
+  const toggleModal = () => {
+    showModal = !showModal;
+  };
 </script>
 
-<Modal modalText="My custom modal message" isPromo={false}/>
+<Modal modalText="My custom modal message" isPromo={false} showModal={showModal} on:click={toggleModal}/>
 <main>
+  <button on:click={toggleModal}>Open Modal</button>
   {#if people.length < 5}
     <h1>Some People</h1>
   {:else if people.length < 8}

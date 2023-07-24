@@ -36,7 +36,14 @@
   };
 </script>
 
-<Modal modalText="My custom modal message" isPromo={false} showModal={showModal} on:click={toggleModal}/>
+<Modal isPromo={false} showModal={showModal} on:click={toggleModal}>
+  <h3>Add a New Person</h3>
+  <form action="">
+    <input type="text" placeholder="Name">
+    <input type="text" placeholder="Color">
+    <input type="number" placeholder="Age">
+  </form>
+</Modal>
 <main>
   <button on:click={toggleModal}>Open Modal</button>
   {#if people.length < 5}

@@ -1,9 +1,32 @@
 <script>
-  const people = [
+  let people = [
     {id: 1, name: "Javi", color: "red", age: 30},
     {id: 2, name: "Mimi", color: "turquoise", age: 29},
     {id: 3, name: "Noah", color: "white", age: 0},
   ];
+
+  const onDeletePerson = (personId) => {
+    people = people.filter((person) => {
+      return person.id != personId;
+    });
+  };
+  
+  let id = 4;
+  let newName = "";
+  let newColor = "";
+  let newAge = 0;
+
+  const onNewPerson = () => {
+    const person = {
+      id: id,
+      name: newName,
+      color: newColor,
+      age: newAge,
+    };
+    people = [...people, person];
+
+    id++;
+  }
 </script>
 
 <main>
@@ -11,8 +34,20 @@
   {#each people as p (p.id)}
     <div style="color: {p.color}">
       <p>{p.name} is {p.age} years old</p>
+      <button on:click={(e) => {onDeletePerson(p.id);}}>Delete Person</button>
     </div>
     {:else}
       <p>There is no one here...</p>
   {/each}
+
+  <p>Name</p>
+  <input type="text" bind:value={newName}>
+  <br>
+  <p>Color</p>
+  <input type="text" bind:value={newColor}>
+  <br>
+  <p>Age</p>
+  <input type="number" bind:value={newAge}>
+  <br>
+  <button on:click={onNewPerson}>Submit</button>
 </main>

@@ -1,12 +1,14 @@
 <script>
+    export let modalText = "";
+    export let isPromo = false;
+
     let showModal = true;
-    let isPromo = false;
 </script>
 
 {#if showModal}
     <div class="backdrop" class:promo={isPromo}>
         <div class="modal">
-            <p>Sign Up!</p>
+            <p>{modalText}</p>
         </div>
     </div>    
 {/if}

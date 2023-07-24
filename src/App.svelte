@@ -31,7 +31,7 @@
   }
 </script>
 
-<Modal/>
+<Modal modalText="My custom modal message" isPromo={false}/>
 <main>
   {#if people.length < 5}
     <h1>Some People</h1>

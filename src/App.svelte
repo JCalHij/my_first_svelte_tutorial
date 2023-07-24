@@ -43,7 +43,7 @@
 
   {#each people as p (p.id)}
     <div style="color: {p.color}">
-      <p>{p.name} is {p.age} years old</p>
+      <h4>{p.name} is {p.age} years old</h4>
       <button on:click={(e) => {onDeletePerson(p.id);}}>Delete Person</button>
     </div>
   {:else}

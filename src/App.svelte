@@ -30,13 +30,20 @@
 </script>
 
 <main>
-  <h1>People</h1>
+  {#if people.length < 5}
+    <h1>Some People</h1>
+  {:else if people.length < 8}
+    <h1>Lots of People</h1>
+  {:else}
+    <h1>Infinite People</h1>
+  {/if}
+
   {#each people as p (p.id)}
     <div style="color: {p.color}">
       <p>{p.name} is {p.age} years old</p>
       <button on:click={(e) => {onDeletePerson(p.id);}}>Delete Person</button>
     </div>
-    {:else}
+  {:else}
       <p>There is no one here...</p>
   {/each}
 

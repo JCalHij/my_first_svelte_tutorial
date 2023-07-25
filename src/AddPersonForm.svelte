@@ -1,4 +1,6 @@
 <script>
+    import { createEventDispatcher } from "svelte";
+
     let name;
     let color;
     let age;
@@ -6,8 +8,15 @@
     let isHider = false;
     let isFleer = false;
 
+    let dispatch = createEventDispatcher();
+
     const handleSubmit = () => {
-        console.log(name, color, age, isFighter, isHider, isFleer);
+        const person = {
+            name: name, 
+            color: color, 
+            age: age
+        };
+        dispatch("addPerson", person);
     };
 </script>
 

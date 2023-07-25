@@ -15,20 +15,23 @@
   };
   
   let id = 4;
-  let newName = "";
-  let newColor = "";
-  let newAge = 0;
 
-  const onNewPerson = () => {
+  /**
+   * 
+   * @param {CustomEvent} e
+   */
+  const onNewPerson = (e) => {
+    const {name, color, age} = e.detail;
     const person = {
       id: id,
-      name: newName,
-      color: newColor,
-      age: newAge,
+      name: name,
+      color: color,
+      age: age,
     };
     people = [...people, person];
 
     id++;
+    toggleModal();
   }
 
   let showModal = false;
@@ -38,7 +41,7 @@
 </script>
 
 <Modal isPromo={false} showModal={showModal} on:click={toggleModal}>
-  <AddPersonForm/>
+  <AddPersonForm on:addPerson={onNewPerson}/>
 </Modal>
 <main>
   <button on:click={toggleModal}>Open Modal</button>
@@ -58,15 +61,4 @@
   {:else}
       <p>There is no one here...</p>
   {/each}
-
-  <p>Name</p>
-  <input type="text" bind:value={newName}>
-  <br>
-  <p>Color</p>
-  <input type="text" bind:value={newColor}>
-  <br>
-  <p>Age</p>
-  <input type="number" bind:value={newAge}>
-  <br>
-  <button on:click={onNewPerson}>Submit</button>
 </main>
